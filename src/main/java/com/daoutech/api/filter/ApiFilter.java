@@ -44,14 +44,21 @@ public class ApiFilter extends GenericFilter {
 		
 		if(HttpMethod.OPTIONS.name().equals(httpServletRequest.getMethod())) {
 			httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+			
 		} else if(this.beforeAuth(httpServletRequest.getRequestURI())) {
+			long startTime = System.currentTimeMillis();
 			chain.doFilter(httpServletRequest, httpServletResponse);
+            this.printLog(httpServletRequest, startTime, System.currentTimeMillis());
+            
 		} else {
 			String token = httpServletRequest.getHeader(JwtUtil.ACCESS_TOKEN);
             if(!ObjectUtils.isEmpty(token) && JwtUtil.isValid(token)) {
         		Authentication auth = JwtUtil.getAuthenticationBy(token);
                 SecurityContextHolder.getContext().setAuthentication(auth);
+                
+                long startTime = System.currentTimeMillis();
                 chain.doFilter(httpServletRequest, httpServletResponse);
+                this.printLog(httpServletRequest, startTime, System.currentTimeMillis());
             } else {
             	httpServletResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
             	httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -86,6 +93,11 @@ public class ApiFilter extends GenericFilter {
 							.findFirst())
 					.map(Cookie::getValue)
 					.orElse(httpServletRequest.getHeader(JwtUtil.ACCESS_TOKEN));
+	}
+	
+	private void printLog(HttpServletRequest request, long startTime, long endTime) {
+		log.info("요청 URI: {}, 소요시간: {}",
+				request.getRequestURI(), (endTime - startTime) + "ms");
 	}
 	
 }

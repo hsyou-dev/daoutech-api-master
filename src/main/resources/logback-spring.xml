@@ -24,10 +24,10 @@
 
 	<!-- file -->
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${LOG_DIR}/daoutech-api.log</file>
+		<file>${LOG_DIR}/daoutech-api-master.log</file>
 		<rollingPolicy
 			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_DIR}/daoutech-api_%d{yyyyMMddHH}.log</fileNamePattern>
+			<fileNamePattern>${LOG_DIR}/daoutech-api-master_%d{yyyyMMddHH}.log</fileNamePattern>
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<encoder
