@@ -4,19 +4,21 @@
 > 특정 경로의 파일을 스케줄링하여 read 및 DB에 저장하고, 해당 데이터를 api로 CRUD할 수 있는 Backend 서버 구현
 
 
+
 ### 사용 기술
-- Spring boot 2.7.3
-- Spring security 5.7.3
-- Spring data Jpa 2.7.2
-- Json Web Token 0.9.1
-- h2 database 2.1.214
-- resilience4j-spring-boot2 1.7.1
-- junit 5.8.2
-- lombok 1.18.24
+  - Spring boot 2.7.3
+  - Spring security 5.7.3
+  - Spring data Jpa 2.7.2
+  - Json Web Token 0.9.1
+  - h2 database 2.1.214
+  - resilience4j-spring-boot2 1.7.1
+  - junit 5.8.2
+  - lombok 1.18.24
+
+
 
 
 ### 실행
-#### Backend 
 ``` bash
 # Change to application root directory
 cd /folder
@@ -33,20 +35,26 @@ java -jar daoutech-api-master-0.0.1.jar --spring.profiles.active=dev -Djava.net.
 ```
 
 
+
 ### API 문서
-https://documenter.getpostman.com/view/1356289/2s7ZLdLYpU#16aa772f-d87e-46a5-8310-537666feba43
+  - https://documenter.getpostman.com/view/1356289/2s7ZLdLYpU#16aa772f-d87e-46a5-8310-537666feba43
+
+
 
 
 ### 테스트
 #### 초기 사용자 데이터(for 인증)
-- 관리자 (통계정보 조회/등록/수정/삭제 가능)
-  - admin / 1234
-- 일반사용자 (통계정보 조회만 가능)
-  - user / 1234
+  - 관리자 (통계정보 조회/등록/수정/삭제 가능)
+    - admin / 1234
+  - 일반사용자 (통계정보 조회만 가능)
+    - user / 1234
   
 #### 기타
-- 추가 사용자가 필요할 경우, 사용자 등록 API로 등록
-- 사용자 인증 API를 사용하여 인증 토큰 발급 및 CRUD API 호출시 발급된 토큰기반으로 호출 (API 문서 참고)
+  - 추가 사용자가 필요할 경우, 사용자 등록 API로 등록
+  - 사용자 인증 API를 사용하여 인증 토큰 발급 및 CRUD API 호출시 발급된 토큰기반으로 호출 (API 문서 참고)
+
+
+
 
 
 ### 구현 내용
