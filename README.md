@@ -56,6 +56,10 @@ java -jar daoutech-api-master-0.0.1.jar --spring.profiles.active=dev -Djava.net.
 #### 기타
   - 추가 사용자가 필요할 경우, 사용자 등록 API로 등록
   - 사용자 인증 API를 사용하여 인증 토큰 발급 및 CRUD API 호출시 발급된 토큰기반으로 호출 (API 문서 참고)
+  
+#### 경로
+  - 파일경로: 어플리케이션 실행경로의 sample/sample.dat
+  - 로그경로: 어플리케이션 실행경로의 log/dev/daoutech-api-master_yyyyMMddHH.log
 ```
 
 
