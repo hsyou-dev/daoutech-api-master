@@ -6,6 +6,7 @@
 
 
 ### 사용 기술
+``` bash
   - Spring boot 2.7.3
   - Spring security 5.7.3
   - Spring data Jpa 2.7.2
@@ -14,7 +15,7 @@
   - resilience4j-spring-boot2 1.7.1
   - junit 5.8.2
   - lombok 1.18.24
-
+```
 
 
 
@@ -37,12 +38,15 @@ java -jar daoutech-api-master-0.0.1.jar --spring.profiles.active=dev -Djava.net.
 
 
 ### API 문서
+``` bash
   - https://documenter.getpostman.com/view/1356289/2s7ZLdLYpU#16aa772f-d87e-46a5-8310-537666feba43
+```
 
 
 
 
 ### 테스트
+``` bash
 #### 초기 사용자 데이터(for 인증)
   - 관리자 (통계정보 조회/등록/수정/삭제 가능)
     - admin / 1234
@@ -52,12 +56,13 @@ java -jar daoutech-api-master-0.0.1.jar --spring.profiles.active=dev -Djava.net.
 #### 기타
   - 추가 사용자가 필요할 경우, 사용자 등록 API로 등록
   - 사용자 인증 API를 사용하여 인증 토큰 발급 및 CRUD API 호출시 발급된 토큰기반으로 호출 (API 문서 참고)
-
+```
 
 
 
 
 ### 구현 내용
+``` bash
 #### 스케줄링을 통해 특정경로 파일 데이터 read / DB에 저장
   - 자정에 특정경로(application-dev.properties 참고) 파일데이터를 읽어 DB 저장 및 파일 삭제처리
   - 매 시간 랜덤데이터를 특정경로 파일에 append하여 저장 (구분자 '|')
@@ -75,3 +80,4 @@ java -jar daoutech-api-master-0.0.1.jar --spring.profiles.active=dev -Djava.net.
   
 #### 단위테스트 적용
   - junit5를 이용하여 단위테스트 적용
+```
