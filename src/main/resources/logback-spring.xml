@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!-- LOCAL -->
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<springProfile name="local">
+		<property name="LOG_DIR" value="./log/local" />
+	</springProfile>
+	<springProfile name="dev">
+		<property name="LOG_DIR" value="./log/dev" />
+	</springProfile>
+	<springProfile name="prod">
+		<property name="LOG_DIR" value="./log/prod" />
+	</springProfile>
+	<!-- [yyyy-MM-dd HH:mm:ss]-[로그레벨]-[메서드]-[로그 내용] -->
+	<property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss}]-[%-5level]-[%C:%M]-[%msg]%n" />
+	
+	<!-- console -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<!-- file -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/daoutech-api.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_DIR}/daoutech-api_%d{yyyyMMddHH}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<springProfile name="local">
+		<root level="INFO">
+			<appender-ref ref="CONSOLE" />
+			<appender-ref ref="FILE" />
+		</root>
+	</springProfile>
+	<springProfile name="dev, prod">
+		<root level="INFO">
+			<appender-ref ref="CONSOLE" />
+			<appender-ref ref="FILE" />
+		</root>
+	</springProfile>
+	
+</configuration>
