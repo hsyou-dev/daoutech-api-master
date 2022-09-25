@@ -7,6 +7,7 @@
 
 ### 사용 기술
 ``` bash
+  - jdk 1.8
   - Spring boot 2.7.3
   - Spring security 5.7.3
   - Spring data Jpa 2.7.2
