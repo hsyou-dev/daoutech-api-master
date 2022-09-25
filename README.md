@@ -21,7 +21,7 @@
 ### 실행
 ``` bash
 # Change to application root directory
-cd /folder
+cd /foldername  (foldername은 git을 통해 다운로드한 루트 폴더명)
 
 # gradle build (-Pprofile: resources-{env} 디렉토리의 properties파일을 포함)
 gradlew -Pprofile=dev bootJar
