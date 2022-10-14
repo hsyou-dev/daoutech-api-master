@@ -21,6 +21,7 @@ import com.daoutech.api.domain.statistics.dto.StatisticsDto;
 import com.daoutech.api.domain.statistics.dto.StatisticsDtoWrapper;
 import com.daoutech.api.domain.statistics.service.StatisticsService;
 import com.daoutech.api.domain.statistics.support.StatisticsValidGroups.updateValidGroup;
+import com.daoutech.api.support.PrintTimeLog;
 import com.daoutech.api.util.ApiResponse;
 import com.daoutech.api.util.ApiResponse.ApiResult;
 
@@ -36,22 +37,26 @@ public class StatisticsController {
 	
 	private final StatisticsService statisticsService;
 	
+	@PrintTimeLog
 	@GetMapping("/inquiry")
 	public ResponseEntity<ApiResult<StatisticsDto>> inquiry(@RequestParam("dateHour") @NotEmpty(message = "dateHour") String dateHour) {
 		return new ResponseEntity<>(ApiResponse.success(statisticsService.inquiry(dateHour)), HttpStatus.OK);
 	}
 	
+	@PrintTimeLog
 	@GetMapping("/inquiry/sumOfPeriod")
 	public ResponseEntity<ApiResult<StatisticsDto>> inquirySumByPeriod(@RequestParam("from") @NotEmpty(message = "from") String from,
 			@RequestParam("to") @NotEmpty(message = "to") String to) {
 		return new ResponseEntity<>(ApiResponse.success(statisticsService.inquirySumByPeriod(from, to)), HttpStatus.OK);
 	}
 	
+	@PrintTimeLog
 	@GetMapping("/inquiry/sumOfDate")
 	public ResponseEntity<ApiResult<StatisticsDto>> inquirySumByDate(@RequestParam("date") @NotEmpty(message = "date") String date) {
 		return new ResponseEntity<>(ApiResponse.success(statisticsService.inquirySumByDate(date)), HttpStatus.OK);
 	}
 	
+	@PrintTimeLog
 	@GetMapping("/inquiry/list")
 	public ResponseEntity<ApiResult<StatisticsDtoWrapper>> inquiryListByPeroid(@RequestParam("from") @NotEmpty(message = "from") String from,
 			@RequestParam("to") @NotEmpty(message = "to") String to,
@@ -59,18 +64,21 @@ public class StatisticsController {
 		return new ResponseEntity<>(ApiResponse.success(statisticsService.inquiryList(from, to, pageable)), HttpStatus.OK);
 	}
 	
+	@PrintTimeLog
 	@PostMapping("/regist")
 	public ResponseEntity<ApiResult<StatisticsDto>> regist(@RequestBody @Validated(
 			updateValidGroup.class) StatisticsDto statDto) {
 		return new ResponseEntity<>(ApiResponse.success(statisticsService.regist(statDto)), HttpStatus.OK);
 	}
 	
+	@PrintTimeLog
 	@PutMapping("/modify")
 	public ResponseEntity<ApiResult<StatisticsDto>> modify(@RequestBody @Validated(
 			updateValidGroup.class) StatisticsDto statDto) {
 		return new ResponseEntity<>(ApiResponse.success(statisticsService.modify(statDto)), HttpStatus.OK);
 	}
 	
+	@PrintTimeLog
 	@DeleteMapping("/delete")
 	public ResponseEntity<ApiResult<Void>> delete(@RequestParam("dateHour") @NotEmpty(message = "dateHour") String dateHour) {
 		statisticsService.delete(dateHour);

@@ -14,6 +14,7 @@ import com.daoutech.api.domain.user.dto.UserDto;
 import com.daoutech.api.domain.user.service.UserService;
 import com.daoutech.api.domain.user.support.UserValidGroups.commonValidGroup;
 import com.daoutech.api.domain.user.support.UserValidGroups.registValidGroup;
+import com.daoutech.api.support.PrintTimeLog;
 import com.daoutech.api.util.ApiResponse;
 import com.daoutech.api.util.ApiResponse.ApiResult;
 import com.daoutech.api.util.JwtUtil;
@@ -29,12 +30,14 @@ public class UserController {
 	
 	private final UserService userService;
 	
+	@PrintTimeLog
 	@PostMapping("/signUp")
 	public ResponseEntity<ApiResult<UserDto>> signUp(@RequestBody @Validated(
 			value = {commonValidGroup.class, registValidGroup.class}) UserDto requestDto) {
 		return new ResponseEntity<>(ApiResponse.success(userService.signUp(requestDto)), HttpStatus.OK);
 	}
 	
+	@PrintTimeLog
 	@PostMapping("/signIn")
 	public ResponseEntity<ApiResult<UserDto>> signIn(@RequestBody @Validated(
 			commonValidGroup.class) UserDto requestDto) {
