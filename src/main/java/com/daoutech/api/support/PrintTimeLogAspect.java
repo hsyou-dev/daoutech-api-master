@@ -37,6 +37,7 @@ public class PrintTimeLogAspect {
 	}
 	
 	private String getBaseUrl(JoinPoint joinPoint) {
+		
 		 Class<? extends Object> clas = joinPoint.getTarget().getClass();
 		 RequestMapping requestMapping = (RequestMapping) clas.getAnnotation(RequestMapping.class);
 		 return requestMapping.value()[0];
