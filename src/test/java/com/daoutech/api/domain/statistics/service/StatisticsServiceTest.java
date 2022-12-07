@@ -47,6 +47,7 @@ class StatisticsServiceTest {
 	void setUp() throws Exception {
 	}
 	
+	//브랜치테스트4
 	/**
 	 * **************************************Dummy************************************** 
 	 */
